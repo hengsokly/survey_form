@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Survey form
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    "survey_form/application", media: "all"
+  %body
+    = yield

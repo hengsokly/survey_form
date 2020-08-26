@@ -66,4 +66,5 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
-test/dummy/log/development.log
+test/dummy/log/*
+test/dummy/tmp/*
