@@ -28,6 +28,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> 6.0.3", ">= 6.0.3.2"
   spec.add_dependency "haml", "~> 5.1.2"
   spec.add_dependency "haml-rails", "~> 2.0"
+  spec.add_dependency "jquery-rails", "~> 4.3.5"
+  spec.add_dependency "bootstrap", "~> 4.5.0"
 
   spec.add_development_dependency "rspec-rails", "~> 4.0.1"
   spec.add_development_dependency "pg"
