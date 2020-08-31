@@ -1,0 +1,17 @@
+%fieldset
+  .field-wrapper{style: 'margin-top: 10px'}
+    = f.hidden_field :_destroy
+    = link_to '#', class: "remove_fields btn btn-link" do
+      %i.fa.fa-trash-alt.icon-delete
+    .d-flex.flex-grow-1
+      .flex-grow-1
+        = f.text_field :name, placeholder: "option", class: 'form-control'
+
+      .flex-grow-1.d-flex.align-items-center
+        %label{style: 'margin: 0 10px 0 20px'}= t('milestone.value')
+        = f.text_field :value, placeholder: "option", class: 'form-control'
+
+      .flex-grow-1.field-option-color-wrapper
+        .flex-row-vertical-center{style: 'height: 100%'}
+          %label= t('milestone.color')
+          = f.text_field :color, class: 'field-option-color form-control'

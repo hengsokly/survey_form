@@ -1,0 +1,19 @@
+%fieldset.section
+  %legend.d-inline
+    .d-inline-block
+      = f.input :name, label: false, placeholder: t('form.section_name')
+      = f.hidden_field :default
+
+    .d-inline-block.form-check.form-check-inline
+      = f.input :display, label: t('form.display_as_section'), input_html: {class: 'form-check-inline'}
+
+    .d-inline-block.action.remove-section{'data-confirm' => t('form.are_you_sure_to_delete_section')}
+      = f.hidden_field :_destroy
+      = link_to '#', class: "remove_fields btn btn-link" do
+        %i.fa.fa-trash-alt.icon-delete
+
+  %ol.fields.sortable
+    = f.fields_for :fields, f.object.fields do |builder|
+      = render 'field_fields', f: builder
+
+    = link_to_add_fields t('form.add_field'), f, :fields

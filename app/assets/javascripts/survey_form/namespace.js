@@ -1,0 +1,1 @@
+window.SurveyForm = window.SurveyForm || {}

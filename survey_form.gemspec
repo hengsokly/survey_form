@@ -30,7 +30,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "haml-rails", "~> 2.0"
   spec.add_dependency "jquery-rails", "~> 4.3.5"
   spec.add_dependency "bootstrap", "~> 4.5.0"
+  spec.add_dependency "simple_form", "~> 5.0.0"
+  spec.add_dependency "coffee-rails", "~> 4.2"
 
+  spec.add_development_dependency "byebug", "~> 11.1.3"
   spec.add_development_dependency "rspec-rails", "~> 4.0.1"
   spec.add_development_dependency "pg"
 end

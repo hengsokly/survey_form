@@ -18,7 +18,7 @@ module SurveyForm
       @form = SurveyForm::Form.new(form_params)
 
       if @form.save
-        redirect_to main_app.root_url
+        redirect_to forms_url
       else
         flash.now[:alert] = @form.errors.full_messages
         render :new
@@ -27,29 +27,41 @@ module SurveyForm
 
     def edit
       @form = SurveyForm::Form.find(params[:id])
+      @form.fields.new
     end
 
     def update
       @form = SurveyForm::Form.find(params[:id])
 
       if @form.update(form_params)
-        redirect_to main_app.root_url
+        redirect_to forms_url
       else
         flash.now[:alert] = @form.errors.full_messages
         render :edit
       end
     end
 
-    def delete
+    def destroy
       @form = SurveyForm::Form.find(params[:id])
       @form.destroy
 
-      redirect_to main_app.root_url
+      redirect_to forms_url
     end
 
     private
       def form_params
-        params.require(:form).permit(:name, :display_order, fields_attributes: [])
+        params.require(:form).permit(
+          :name, :display_order,
+          sections_attributes: [
+            :id, :name, :default, :_destroy, :display,
+            fields_attributes: [
+              :id, :name, :type, :required, :display_order, :code, :entry_able,
+              :mapping_field_id, :_destroy, :tracking, :description, :relevant,
+              validations: {},
+              field_options_attributes: %i[id name value color _destroy]
+            ]
+          ]
+        )
       end
   end
 end

@@ -1,0 +1,22 @@
+en:
+  form:
+    field_name: Field name
+    field_hint: Field hint
+    add_field: Add field
+    add_section: Add section
+    please_select: Please select
+    skip_logic_not: not
+    any_of: any_of
+    match_all_of: match all of
+    section_name: Section name
+    display_as_section: Display as section?
+    are_you_sure_to_delete_section: Are you sure to delete this section?
+    add_option: Add option
+    tracingable: Tracingable
+    setting: Setting
+    validation_criteria: Validation criteria
+    skip_logic: Skip logic
+    required: Required
+    question: Question
+    condition: Condition
+    value: Value

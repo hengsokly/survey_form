@@ -6,6 +6,7 @@ class CreateSurveyFormFields < ActiveRecord::Migration[6.0]
       t.string  :type
       t.text    :description
       t.integer :display_order
+      t.integer :section_id
       t.integer :form_id
 
       # Mapping

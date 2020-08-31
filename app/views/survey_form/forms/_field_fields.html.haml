@@ -1,0 +1,47 @@
+%li
+  %fieldset.fieldset
+    .field-wrapper
+      %button.btn.move{type: :button}
+        %i.fa.fa-arrows-alt
+
+      .d-flex.flex-grow-1
+        .wrapper.d-flex.align-items-center.flex-grow-1
+          %button.btn.collapse-trigger{type: :button}
+            %i.fas.fa-caret-right
+
+          %abbr.abbr-required{:title => "required", class: ('d-none' if !f.object.required?)} *
+
+          .flex-grow-1
+            = f.hidden_field :type, class: 'field-type', 'data-field' => f.object.to_json
+            = f.hidden_field :display_order, class: 'display-order'
+            = f.text_field :name, placeholder: t('form.field_name'), class: 'form-control field-name'
+
+            - if error_msg = f.object.errors[:name].presence
+              .error-message.text-danger.small= error_msg.join('; ')
+
+            = f.text_field :description, placeholder: t('form.field_hint'), class: "form-control field-definition no-style as-hint"
+
+          %button.btn.btn-outline-primary.btn-add-field{type: 'button'}= t('form.add_field')
+
+        .action.d-flex.flex-column
+          = f.hidden_field :_destroy
+
+          .btn-setting.pointer.flex-grow-1.d-flex.align-items-center.justify-content-center
+            %i.fas.fa-cog.icon-gray
+
+          .remove_fields.pointer.flex-grow-1.d-flex.align-items-center.justify-content-center
+            %i.fas.fa-trash-alt.icon-delete
+
+    = render 'kinds'
+
+    .collapse-content
+      / = render 'mapping_field_content', f: f
+
+      .options-wrapper
+        = f.fields_for :field_options do |builder|
+          = render 'field_option_fields', f: builder
+
+        = link_to_add_fields t('form.add_option'), f, :field_options
+
+    .setting-wrapper
+      = render 'setting', f: f

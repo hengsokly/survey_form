@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_085454) do
+ActiveRecord::Schema.define(version: 2020_08_28_084244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "survey_form_field_options", force: :cascade do |t|
+    t.integer "field_id"
+    t.string "name"
+    t.string "value"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "survey_form_fields", force: :cascade do |t|
     t.string "code"
@@ -21,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_085454) do
     t.string "type"
     t.text "description"
     t.integer "display_order"
+    t.integer "section_id"
     t.integer "form_id"
     t.integer "mapping_field_id"
     t.string "mapping_field_type"
@@ -38,6 +48,16 @@ ActiveRecord::Schema.define(version: 2020_08_26_085454) do
   create_table "survey_form_forms", force: :cascade do |t|
     t.string "name"
     t.integer "display_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "survey_form_sections", force: :cascade do |t|
+    t.string "name"
+    t.integer "form_id"
+    t.integer "display_order"
+    t.boolean "default", default: false
+    t.boolean "display", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
