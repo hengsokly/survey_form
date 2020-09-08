@@ -34,7 +34,7 @@ module SurveyForm
       @form = SurveyForm::Form.find(params[:id])
 
       if @form.update(form_params)
-        redirect_to forms_url
+        redirect_to survey_form.forms_url
       else
         flash.now[:alert] = @form.errors.full_messages
         render :edit
@@ -45,7 +45,7 @@ module SurveyForm
       @form = SurveyForm::Form.find(params[:id])
       @form.destroy
 
-      redirect_to forms_url
+      redirect_to survey_form.forms_url
     end
 
     private
