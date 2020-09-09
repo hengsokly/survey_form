@@ -7,13 +7,16 @@
       %thead
         %tr
           %th{:scope => "col"} #
-          %th{:scope => "col"} name
-          %th{:scope => "col"}
+          %th{:scope => "col"} Name
           %th{:scope => "col"}
       %tbody
-        - @forms.each do |form|
+        - @forms.each_with_index do |form, index|
           %tr
-            %th{:scope => "row"} 1
-            %td= link_to form.name, form_path(form)
-            %td= link_to 'edit', edit_form_path(form)
-            %td= link_to 'delete', form_path(form), method: :delete, data: { confirm: 'Are you sure to delete this form?'}
+            %th{:scope => "row"}= index + 1
+            %td= link_to form.name, edit_form_path(form)
+            %td
+              = link_to edit_form_path(form), class: "btn-circle btn-sm btn-warning text-decoration-none mr-1" do
+                %i.fas.fa-edit
+
+              = link_to form_path(form), method: :delete, data: { confirm: 'Are you sure to delete this form?'}, class: 'btn-circle btn-sm btn-danger text-decoration-none' do
+                %i.fas.fa-trash
